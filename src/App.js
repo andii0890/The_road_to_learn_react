@@ -32,13 +32,18 @@ class App extends Component {
   
   onDismiss(id){
     const updatedList = this.state.list.filter(item => item.objectID !== id);
+
     this.setState({list: updatedList});
   }
 
   render(){
     return (
       <div className="App">
-        {this.state.list.map(item => 
+        {this.state.list.map(item => {
+          const onHandleDismiss = ()  =>
+          this.onDismiss(item.objectID);
+
+          return (
             <div key = {item.objectID}>
               <span>
                 <a href={item.url}>{item.title}</a>
@@ -47,14 +52,16 @@ class App extends Component {
               <span>{item.num_comments}</span>
               <span>{item.points}</span>
               <span>
-                <button onClick={() => this.onDismiss(item.objectID)}
+                <button 
+                onClick={ () => this.onDismiss(item.objectID)}
                 type='button'
                 >
                   Dismiss
                 </button>
               </span>
             </div>
-          )
+         );
+        })
         } 
       </div>
     );
