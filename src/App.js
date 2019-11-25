@@ -55,7 +55,7 @@ class App extends Component {
             onChange={this.onSearchChange}
             />
         </form>
-        {this.state.list.filter().map(item => {
+        {this.state.list.filter(isSearched(this.state.searchTerm)).map(item => {
           const onHandleDismiss = ()  =>
           this.onDismiss(item.objectID);
 
