@@ -65,10 +65,7 @@ class App extends Component {
   }
 }
 
-class Search extends Component {
-  render(){
-    const { value, onChange, children } = this.props;
-    return (
+const Search = ({ value, onChange,children }) =>
       <form>
         {children} <input
         type='text'
@@ -76,9 +73,8 @@ class Search extends Component {
         onChange={onChange}
         />
       </form>
-    );
-  }
-}
+  
+
 
   class Table extends Component{
     render(){
